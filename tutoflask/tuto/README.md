@@ -2,7 +2,21 @@
 
 ## INSTALLATION
 
-Télécharger le dossier 
-Depuis le dossier, lancer l'environnement virtuel 
-Vérifiez que toutes les librairies python sont bien installées ( flask, flask-login, flask-sqlachemy, flask-bootstrap, yaml)
-Aller dans tutoflask et lancer flask run puis aller sur votre navigateur à l'adresse indiqué.
+Programmes requis:
+```
+python3
+flask 
+python3-pip
+```
+
+
+Librairies python 3 requises:
+```
+flask
+flask-login
+flask_sqlachemy
+flask_bootstrap
+pyyaml
+```
+
+Dans tutoflask, lancer python -m flask run et aller dans votre navigateur à l'adresse indiqué.
