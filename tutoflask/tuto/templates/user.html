@@ -1,0 +1,29 @@
+{% extends "basebs.html" %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}"> 
+{% endblock %}
+{% block content %}
+<h1>Listes des utilisateurs</h1>
+
+<table  class="encadre table table-striped">
+    <thead>
+        <tr> 
+            <th> Nom des utilisateurs </th>
+            <th style="text-align:right;padding-right:80px">Activité</tr> 
+    </thead>
+    {% for user in users %}
+    <tr >
+        <td style="width:30%">{{ user.username }}</td>
+        <td style="text-align:right">
+            {% if user.is_authenticated %}
+            <a href="{{url_for('edit_user', username=user.username)}}"><button type="button" class="btn btn-light" >Modifier</button></a>
+            <a href="{{ url_for('delete_user', username=user.username) }}"><button type="button" class="btn btn-danger" >Supprimer</button></a>
+        {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href= "{{url_for('edit_user')}}"> <button class="btn btn-info ajout" >+</button></a>
+{% endblock %}
+

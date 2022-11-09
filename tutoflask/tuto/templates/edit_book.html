@@ -1,0 +1,105 @@
+{% extends "basebs.html" %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}"> 
+{% endblock %}
+{% block content %}
+<header class="encadre">
+<form role="form" method='POST' action="{{url_for('save_book')}}" enctype="multipart/form-data">
+    <legend>Edit book : {{ book.name }}</legend>
+    {{ form.hidden_tag () }}
+
+    <div class=
+        {% if form.title.errors %}
+            "form-group has-error"
+        {% else %} 
+            "form-group"
+        {% endif %}
+        style="margin:25px"
+    >
+    <p>{{ form.title.label }} : {{ form.title(size =100) }}</p>
+    </div>
+    {% if form.title.errors %}
+        <ul class="list-group">
+        {% for e in form.title.errors %}
+            <li class="list-group-item list-group-item-danger" >{{ e }}</li >
+        {% endfor %}
+        </ul >
+    {% endif %}
+
+    <div class=
+        {% if form.author_id.errors %}
+            "form-group has-error"
+        {% else %} 
+            "form-group"
+        {% endif %}
+        style="margin:0 25px 25px 25px"
+    >
+    <p>{{ form.author_id.label }} : {{ form.author_id(size =1) }}</p>
+    </div>
+    {% if form.author_id.errors %}
+        <ul class="list-group">
+        {% for e in form.author_id.errors %}
+            <li class="list-group-item list-group-item-danger" >{{ e }}</li >
+        {% endfor %}
+        </ul >
+    {% endif %}
+
+    <div class=
+        {% if form.price.errors %}
+            "form-group has-error"
+        {% else %} 
+            "form-group"
+        {% endif %}
+        style="margin:0 25px 25px 25px"
+        >
+        <p>{{ form.price.label }} : {{ form.price(size =25) }}</p>
+    </div>
+    {% if form.price.errors %}
+        <ul class="list-group">
+        {% for e in form.price.errors %}
+            <li class="list-group-item list-group-item-danger" >{{ e }}</li >
+        {% endfor %}
+        </ul >
+    {% endif %}
+
+    <div class=
+        {% if form.url.errors %}
+            "form-group has-error"
+        {% else %} 
+            "form-group"
+        {% endif %}
+        style="margin:0 25px 25px 25px"
+    >
+    <p>{{ form.url.label }} : {{ form.url(size =25) }}</p>
+    </div>
+    {% if form.url.errors %}
+        <ul class="list-group">
+        {% for e in form.url.errors %}
+            <li class="list-group-item list-group-item-danger" >{{ e }}</li >
+        {% endfor %}
+        </ul >
+    {% endif %}
+
+    <div class=
+        {% if form.img.errors %}
+            "form-group has-error"
+        {% else %} 
+            "form-group"
+        {% endif %}
+        style="margin:0 25px 25px 25px"
+    >
+    <p>{{ form.img.label }} : {{ form.img(size =25) }}</p>
+    </div>
+    {% if form.img.errors %}
+        <ul class="list-group">
+        {% for e in form.img.errors %}
+            <li class="list-group-item list-group-item-danger" >{{ e }}</li >
+        {% endfor %}
+        </ul >
+    {% endif %}
+    <input class="btn btn-success"  style="margin-bottom:25px" type="submit" value="Enregistrer">
+</form>
+</header>
+{% endblock %}
+

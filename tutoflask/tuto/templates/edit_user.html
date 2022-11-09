@@ -1,0 +1,50 @@
+{% extends "basebs.html" %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}"> 
+{% endblock %}
+{% block content %}
+<header class="encadre">
+<form role="form" method='POST' action="{{url_for('save_user')}}">
+    <legend>Edit user : {{ user.username }}</legend>
+    {{ form.hidden_tag () }}
+    <div class=
+        {% if form.username.errors %}
+            "form-group has-error"
+        {% else %} 
+            "form-group"
+        {% endif %}
+        style="margin:25px"
+    >
+    <p>{{ form.username.label }} : {{ form.username(size =25) }}</p>
+    </div>
+    {% if form.username.errors %}
+        <ul class="list-group">
+        {% for e in form.username.errors %}
+            <li class="list-group-item list-group-item-danger" >{{ e }}</li >
+        {% endfor %}
+        </ul >
+    {% endif %}
+
+    <div class=
+        {% if form.password.errors %}
+            "form-group has-error"
+        {% else %} 
+            "form-group"
+        {% endif %}
+        style="margin:0 25px 25px 25px"
+    >
+    <p>{{ form.password.label }} : {{ form.password(size =25) }}</p>
+    </div>
+    {% if form.password.errors %}
+        <ul class="list-group">
+        {% for e in form.password.errors %}
+            <li class="list-group-item list-group-item-danger" >{{ e }}</li >
+        {% endfor %}
+        </ul >
+    {% endif %}
+    <input class="btn btn-success" style="margin-bottom:25px"type="submit" value="Enregistrer">
+</form>
+</header>
+{% endblock %}
+

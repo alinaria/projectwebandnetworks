@@ -1,0 +1,75 @@
+<! template de base du site>
+<!doctype html>
+<html lang="fr">
+  <head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      {% block styles %}
+      <!-- Bootstrap CSS -->
+      {{ bootstrap.load_css() }}
+      {% endblock %}
+    <title>Ma bibliothèque</title>
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="">
+              <img src="{{url_for('static',filename='book.png')}}" alt=""  class="d-inline-block align-text-top logo">
+            Ma bibliothèque </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                  <a href= "{{url_for('home')}}"><button class="btn btn-outline-light"  style="margin-right: 5px;">Home</button></a>
+                </li>
+
+                <li class="nav-item">
+                  <a  href= "{{url_for('gestion_author')}}"> <button class="btn btn-outline-light" style="margin-right: 5px;">Gestion des auteurs</button></a>
+                </li>
+
+                <li class="nav-item">
+                  <a href= "{{url_for('gestion_book')}}"> <button class="btn btn-outline-light" style="margin-right: 5px;">Gestion des livres</button></a>
+                </li>
+
+                <li class="nav-item">
+                  <a href= "{{url_for('gestion_user')}}"><button class="btn btn-outline-light"  style="margin-right: 5px;">Gestion des utilisateurs</button></a>
+                </li>
+              </ul>
+              <ul class="navbar-nav" >
+                {% if current_user.is_authenticated %}
+                <li class="nav-item " ><p class="text-info" style="margin-right: 5px;padding-top: 5px;margin-bottom: 0;" >Utilisateur connecté : {{ current_user.username }}</p></li>
+                <li class="nav-item " ><a href="{{ url_for('logout') }}"><button type="button" class="btn btn-outline-danger" >Se déconnecter</button></a></li>
+                {% else %}
+                <li class="nav-item "><a href="{{ url_for('login') }}"><button type="button" class="btn btn-outline-success" >Se connecter</button></a></li>
+                {% endif %}
+              </ul>            
+
+            </div>
+          </div>
+        </nav>    
+      </header>
+      <!-- Your page content -->
+      <main class="container">
+        {% block content %}
+
+        {% endblock %}
+      </main>
+        
+      <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+          <span class="text-muted">Ma bibliothèque footer </span>
+        </div>
+      </footer>
+      {% block scripts %}
+      <!-- Optional JavaScript -->
+      {{ bootstrap.load_js() }}
+      {% endblock %}
+  </body>
+</html>

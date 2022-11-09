@@ -1,0 +1,50 @@
+/* fichier de style supplémentaires à bootstrap*/
+body{
+    background-image: url('conception-aquarelle.webp');
+}
+
+h1{
+    text-shadow: 3px 3px 3px rgb(11 3 3 / 30%);
+    text-align: center;
+    color:#c05c5c;
+    font-family: Didot;
+}
+
+
+main {
+    margin-top: 8em;
+    margin-bottom: 5em;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width:100%;
+}
+
+img{
+    height:250px;
+}
+
+img.logo{
+    width:30px;
+    height:24px;
+}
+
+.encadre{
+    width: 1200px;   
+    border: 1px solid rgba(124, 30, 30, 0.541);
+    text-align: center;
+    background-color: rgb(205, 185, 206);
+
+}
+
+.ajout{
+    font-size:45px;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    position:fixed;
+    bottom:80px;
+    right:70px;
+}

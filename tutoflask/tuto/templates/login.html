@@ -1,0 +1,26 @@
+{% extends "basebs.html" %}
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css')}}"> 
+{% endblock %}
+{% block content %}
+<header class="encadre">
+    <form class="form-horizontal " role="form" method="POST" action="{{ url_for('login') }}">
+        <legend>Connexion</legend>
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <div class="col-sm-10"  style="margin:25px">
+                <label for="username" class="col-sm-2 control-label">{{ form.username.label }} : </label>
+                {{ form.username(size =25,placeholder ="Username") }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10" style="margin:25px">
+                <label for="password" class="col-sm-2 control-label">{{ form.password.label }} : </label>
+                {{ form.password(size =25,placeholder ="Password") }}
+            </div>
+        </div>
+        <input class="btn btn-success" style="margin-bottom:25px"type="submit" value="Sign In">
+    </form>
+</header>
+{% endblock %}
